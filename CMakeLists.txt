@@ -104,10 +104,9 @@ else()
     set(sdl2_ttf_install_name_infix static)
 endif()
 
-add_library(SDL2_ttf
-    SDL_ttf.c
-    SDL_ttf.h
-)
+add_library(SDL2_ttf)
+target_sources(SDL2_ttf PRIVATE SDL_ttf.c)
+target_include_directories(SDL2_ttf PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 add_library(SDL2_ttf::${sdl2_ttf_export_name} ALIAS SDL2_ttf)
 
 target_compile_definitions(SDL2_ttf PRIVATE
